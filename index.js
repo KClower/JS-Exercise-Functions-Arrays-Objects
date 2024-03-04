@@ -15,7 +15,7 @@
 function addNumbers(num1, num2) {
   return num1 + num2;
 }
-
+console.log(addNumbers(5,3));
 // ⭐️ Example Challenge end ⭐️
 
 
@@ -28,7 +28,7 @@ function addNumbers(num1, num2) {
  * ### Challenge `sayGoodbye`
  * 
  * @instructions
- * This function should take an a name as an argument,
+ * This function should take in a name as an argument,
  * and return a string that says 'Goodbye, {name}. Have a great day.'
  * 
  * For example, if we invoke `sayGoodbye`
@@ -36,12 +36,12 @@ function addNumbers(num1, num2) {
  * the returned value should look like: 'Goodbye, Andy. Have a great day.'
  * 
 */
-function sayGoodbye() {
-  /* code here*/
-  const goodbye = "Goodbye, Andy. Have a great day";
+function sayGoodbye(name) {
+ const goodbye = "Goodbye, " + name + ". Have a great day";
   return goodbye;
 }
-console.log(sayGoodbye());
+
+console.log(sayGoodbye("Andy"));
 /**
  * ### Challenge `temperatureCtoF`
  * 
@@ -57,11 +57,12 @@ console.log(sayGoodbye());
  * Hint 2: There is a very easy way to round numbers in JS. Do a google search to find out how. 
 */
 function temperatureCtoF(num1, num2, num3, num4) {
-  return num1 * num2 / num3 + num4;
+  const roundedTemp = Math.round (num1 * num2 / num3 + num4) + " " + "Fahrenhrit";
+  return roundedTemp;
 }
 // temperatureCtoF(24,9,5,32);
 console.log(temperatureCtoF(24, 9, 5, 32));
-console.log(Math.round(75.2));
+
 /**
  * ### Challenge `temperatureInF`
  * 
@@ -79,11 +80,15 @@ console.log(Math.round(75.2));
  * 
  * Hint: You can call your `temperatureCtoF` function from inside `temperatureInF`.
 */
-function temperatureInF(/* code here */) {
-  /* code here */
+function temperatureInF(num1, letter){
+  if(letter === "F"){
+    return num1 + letter
+  }
+  if(letter === "C"){
+    return  Math.round (num1 * 9 / 5 + 32)
+  }
 }
-
-
+console.log(temperatureInF(34,"C"))
 /**
  * ### Challenge `makePersonObject`
  * 
@@ -100,9 +105,18 @@ function temperatureInF(/* code here */) {
  *   email: "leia@leia.com",
  * }
 */
-function makePersonObject(/* code here */) {
-  /* code here */
+function makePersonObject(num, name, email) {
+  const person = {
+   id: num,
+   name: name,
+   email: email
+
+  }
+  return person;
 }
+console.log(makePersonObject(8, "Kevin", "BigKev@Yahoo.com"))
+
+
 
 /**
  * ### Challenge `getName`
@@ -117,10 +131,11 @@ function makePersonObject(/* code here */) {
  * passing { id: 1, name: 'Leia', email: 'leia@leia.com` } as the argument,
  * the returned value should look like `Hello, my name is Leia`.
 */
-function getName(/* code here */) {
-  /* code here */
+function getName(person) {
+   return `Hello, my name is ${person.name}.`;
 }
-
+const obj = { id: 1, name: 'Leia', email: 'leia@leia.com' }
+console.log(getName(obj));
 
 /**
  * ### Challenge `appleIndex`
@@ -137,10 +152,20 @@ function getName(/* code here */) {
  * passing in [ 'orange', 'grape', 'apple', 'banana', 'mango' ] as the argument,
  * the returned value should be: 2.
 */
-function appleIndex(/* code here */) {
-  /* code here */
-}
 
+function appleIndex(fruitArr) {
+
+  for(let i = 0; i < fruitArr.length; i++){
+    
+    if(fruitArr[i] === "apple"){
+     
+      return i
+    }
+   
+  }
+}
+let fruits = [ 'orange', 'grape', 'apple', 'banana', 'mango' ];
+console.log(appleIndex(fruits))
 /**
  * ### Challenge `isItAnApple`
  * 
@@ -156,11 +181,21 @@ function appleIndex(/* code here */) {
  * passing in [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ] as the argument,
  * the returned value should be: [ false, true, false, false, true, false ].
 */
-function isItAnApple(/* code here */) {
-  /* code here */
+function isItAnApple(fruitArry) {
+  const result = []
+  for(let i = 0; i < fruitArry.length; i++){
+
+  
+  if(fruitArry[i] === "apple"){
+   result.push(true);
+  }else{
+    result.push(false)
+  }
 }
-
-
+  return result
+}
+ fruits = [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ]
+console.log(isItAnApple(fruits))
 
 
 // ⭐️ Example Test Data ⭐️
@@ -199,7 +234,7 @@ function get3rdCar(inventory) {
 // 👇 COMPLETE YOUR WORK BELOW 👇
 // 👇 COMPLETE YOUR WORK BELOW 👇
 // 👇 COMPLETE YOUR WORK BELOW 👇
-
+console.log(get3rdCar(inventory))
 
 /**
  * ### Challenge `getCarInfoByIndex`
@@ -214,8 +249,10 @@ function get3rdCar(inventory) {
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoByIndex(inventory, index) {
-  /* code here */
+  const cars = inventory[index];
+ return `This is a ${cars.car_make} ${cars.car_model}` ;
 }
+console.log(getCarInfoByIndex(inventory, 0))
 
 /**
  * ### Challenge `getLastCarInfo`
@@ -262,6 +299,16 @@ function getModelYears(/* code here */) {
 function getCarInfoById(/* code here */) {
   /* code here */
 }
+
+
+
+
+
+
+
+
+
+
 
 /**
  * ### Challenge `getOlderCars`
